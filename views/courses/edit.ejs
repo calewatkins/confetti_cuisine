@@ -1,0 +1,18 @@
+<div class="data-form">
+  <form action="<%= `/courses/${course._id}/update?_method=PUT` %>" method="POST">
+    <h2>Edit the Course: </h2>
+    <label for="inputTitle">Title</label>
+    <input type="text" name="title" id="inputTitle" value="<%= course.title %>" placeholder="Title" required>
+    <br>
+    <label for="inputDescription">Description</label>
+    <input type="text" name="description" id="inputDescription" value="<%= course.description %> " placeholder="Description">
+    <br>
+    <label for="inputMaxStudents">Max Students</label>
+    <input type="text" name="maxStudents" id="inputMaxStudents" value="<%= course.maxStudents %>" placeholder="Max Students">
+    <br>
+    <label for="inputCost">Cost</label>
+    <input type="text" name="cost" id="inputCost" value="<%= course.cost %>" placeholder="Cost">
+    <br>
+    <button type="submit">Confirm</button>
+  </form>
+</div>

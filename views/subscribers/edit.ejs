@@ -1,0 +1,15 @@
+<div class="data-form">
+  <form method="POST" action="<%= `/subscribers/${subscriber._id}/update?_method=PUT`%>">
+    <h2>Edit subscriber</h2>
+    <label for="inputName">Name: </label>
+    <input type="text" name="name" id="inputName" value="<%= subscriber.name %>" required autofocus>
+    <br>
+    <label for="inputEmail">Email: </label>
+    <input type="text" name="email" id="inputEmail" value="<%= subscriber.email %>" required>
+    <br>
+    <label for="inputZipCode">Zip Code: </label>
+    <input type="text" name="zipCode" id="inputZipCode" value="<%= subscriber.zipCode %>">
+    <br>
+    <button type="submit">Update</button>
+  </form>
+</div>

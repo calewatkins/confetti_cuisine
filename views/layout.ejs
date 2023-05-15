@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Recipe App</title>
+
+  <link rel="shortcut icon" type="image/png" href="/images/icon.png" />
+	<!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script> -->
+	<script type="text/javascript" src="/js/jquery.min.js"></script>
+	<script type="text/javascript" src="/js/bootstrap.min.js"></script>
+	<script type="text/javascript" src="/js/recipeApp.js"></script>
+	<script src="/socket.io/socket.io.js"></script>
+	<link rel="stylesheet" href="/css/bootstrap.css">
+	<link rel="stylesheet" href="/css/recipe_app.css">
+  
+  <!-- <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+  <script src="https://cdn.jsdelivr.net/npm/popper.js@1.12.9/dist/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>  <link href="css/confettiCuisine.css"> -->
+  
+</head>
+<body>
+  <nav>
+    <a href="/chat" class="chat-icon">@</a>
+    <div class="col-sm nav-align">
+      <h1 id="title">Recipe App</h1>
+    </div>
+    <div class="col-sm nav-align">
+      <a href="/">
+        <span class="button">Home</span>
+      </a>
+      <a href="/courses">
+        <span class="button">Cooking Courses</span>
+      </a>
+      <a href="/contact">
+        <span class="button">Contact</span>
+      </a>
+      <%- include("./courses/_coursesModel") %>
+    </div>
+    <div class="login-status">
+      <% if (loggedIn) { %>
+        <div class="bubble logged-in">
+        Logged in as <a href="<%= `/users/${currentUser._id}`%>">
+          <%= currentUser.fullName %></a>
+        </div>
+        <div class="log-out">
+          <a href="/users/logout">Log out</a>
+        </div>
+      <% } else { %>
+      <div class="bubble log-in">
+        <a href="/users/login">Log In</a>
+      </div>
+      <% } %>
+    </div>
+  </nav>
+
+  <div class="flashes">
+    <% if (flashMessages) { %>
+      <% if (flashMessages.success) { %>
+        <div class="flashSuccess"> 
+          <%= flashMessages.success %>
+        </div>
+      <% } else if (flashMessages.error) { %>
+        <div class="flashError">
+          <%= flashMessages.error %>
+        </div>
+      <% } %>
+    <% } %>
+  </div>
+
+  <div class="container">
+    <%- body %>
+  </div>
+  
+</body>
+</html>
